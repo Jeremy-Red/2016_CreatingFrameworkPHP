@@ -1,0 +1,14 @@
+FROM php:5.4-apache
+
+ARG UID
+ARG GID
+ARG USERGROUP
+
+RUN addgroup --system --gid ${GID} ${USERGROUP}
+RUN adduser --system --shell /bin/bash --uid ${UID} --gid ${GID} --disabled-password --disabled-login ${USERGROUP}
+RUN sed -i "s/User www-data/User ${USERGROUP}/g" /etc/apache2/apache2.conf
+RUN sed -i "s/Group www-data/Group ${USERGROUP}/g" /etc/apache2/apache2.conf
+
+
+RUN a2enmod rewrite
+RUN docker-php-ext-install pdo pdo_mysql mysqli
