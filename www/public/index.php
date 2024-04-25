@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+
+use vendor\core\Router;
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
@@ -7,20 +10,20 @@ define('CORE', dirname(__DIR__) . '/vendor/core');
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
 
-require '../vendor/core/Router.php';
 require '../vendor/libs/functions.php';
-// require '../app/controllers/Main.php';
-// require '../app/controllers/Posts.php';
-// require '../app/controllers/PostsNew.php';
 
 spl_autoload_register(function ($class) {
-    $file = APP . "/controllers/{$class}.php";
+    $file = ROOT . '/';
+    $file .= str_replace('\\', '/', $class);
+    // $file .= strtr($class, '\\', '/');
+    $file .= '.php';
     if (is_file($file)) {
         require_once $file;
     }
 });
 
-Router::add('^pages/?(?P<action>[a-z-]+)?$', ['controller' => 'Posts']);
+Router::add('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller' => 'Page']);
+Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'view']);
 // default routes
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
 Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');

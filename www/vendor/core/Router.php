@@ -1,4 +1,6 @@
 <?php
+namespace vendor\core;
+
 class Router
 {
     protected static $routes = []; //it consists list all routes
@@ -27,6 +29,7 @@ class Router
                 if (!isset($route['action'])) {
                     $route['action'] = 'index';
                 }
+                $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
                 return true;
             }
@@ -36,10 +39,9 @@ class Router
     public static function dispatch($url)
     {
         if (self::matchRoute($url)) {
-            $controller = self::$route['controller'];
-            $controller = self::upperCamelCase($controller);
+            $controller = 'app\controllers\\' . self::$route['controller'];
             if (class_exists($controller)) {
-                $cObj = new $controller;
+                $cObj = new $controller(self::$route);
                 $action = self::$route['action'];
                 $action = self::lowerCamelCase($action);
                 $action = $action . 'Action';
