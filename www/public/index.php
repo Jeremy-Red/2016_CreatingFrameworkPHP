@@ -15,3 +15,4 @@ if (Router::matchRoute($query)) {
 } else {
     echo '404';
 }
+echo '';
