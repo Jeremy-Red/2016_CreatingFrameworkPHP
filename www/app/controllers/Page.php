@@ -8,6 +8,7 @@ class Page extends Controller
     public function viewAction()
     {
         debug($this->route);
+        debug($_GET);
         echo __METHOD__;
     }
 }
