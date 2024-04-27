@@ -40,7 +40,9 @@ class Router
     {
         $url = self::removeQueryString($url);
         if (self::matchRoute($url)) {
-            $controller = 'app\controllers\\' . self::$route['controller'];
+            $controller = 'app\controllers\\';
+            $controller .= self::$route['controller'];
+            $controller .= 'Controller';
             if (class_exists($controller)) {
                 $cObj = new $controller(self::$route);
                 $action = self::$route['action'];
