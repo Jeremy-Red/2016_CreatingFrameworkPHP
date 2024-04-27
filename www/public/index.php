@@ -9,13 +9,13 @@ define('WWW', __DIR__);
 define('CORE', dirname(__DIR__) . '/vendor/core');
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
+define('LAYOUT', 'default');
 
 require '../vendor/libs/functions.php';
 
 spl_autoload_register(function ($class) {
     $file = ROOT . '/';
     $file .= str_replace('\\', '/', $class);
-    // $file .= strtr($class, '\\', '/');
     $file .= '.php';
     if (is_file($file)) {
         require_once $file;
@@ -27,7 +27,5 @@ Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'v
 // default routes
 Router::add('^$', ['controller' => 'Main', 'action' => 'index']);
 Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$');
-
-debug(Router::getRoutes());
 
 Router::dispatch($query);

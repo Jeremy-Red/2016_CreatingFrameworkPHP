@@ -48,6 +48,7 @@ class Router
                 $action = $action . 'Action';
                 if (method_exists($cObj, $action)) {
                     $cObj->$action();
+                    $cObj->getView();
                 } else {
                     echo "Method {$controller}::{$action} is not exist";
                 }
