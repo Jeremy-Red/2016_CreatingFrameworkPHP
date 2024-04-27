@@ -1,16 +1,15 @@
 <?php
 namespace app\controllers;
 
+use app\models\Main;
+
 class MainController extends AppController
 {
-    // public $layout = 'main';
     public function indexAction()
     {
-        // $this->layout = false;
-        // $this->layout = 'main';
-        // $this->layout = 'default';
-        // $this->view = 'test';
+        $model = new Main();
+        $posts = $model->findAll();
         $title = 'Page title';
-        $this->set(compact('title'));
+        $this->set(compact('title', 'posts'));
     }
 }
