@@ -11,4 +11,4 @@ RUN sed -i "s/Group www-data/Group ${USERGROUP}/g" /etc/apache2/apache2.conf
 
 
 RUN a2enmod rewrite
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN docker-php-ext-install pdo pdo_mysql mysqli mbstring
