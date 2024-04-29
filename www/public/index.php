@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 
 use vendor\core\Router;
+use vendor\core\App;
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
@@ -10,6 +11,7 @@ define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
 define('CORE', dirname(__DIR__) . '/vendor/core');
 define('LIBS', dirname(__DIR__) . '/vendor/libs');
+define('CACHE', dirname(__DIR__) . '/tmp/cache');
 define('LAYOUT', 'default');
 
 require '../vendor/libs/functions.php';
@@ -22,6 +24,8 @@ spl_autoload_register(function ($class) {
         require_once $file;
     }
 });
+
+new App();
 
 Router::add('^page/(?P<action>[a-z-]+)/(?P<alias>[a-z-]+)$', ['controller' => 'Page']);
 Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action' => 'view']);

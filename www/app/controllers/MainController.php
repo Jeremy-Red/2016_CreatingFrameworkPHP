@@ -2,13 +2,20 @@
 namespace app\controllers;
 
 use app\models\Main;
+use vendor\core\App;
 
 class MainController extends AppController
 {
     public function indexAction()
     {
+        // App::$app->getList();
         $model = new Main();
-        $posts = \R::findAll('posts');
+        // \R::fancyDebug(true);
+        $posts = App::$app->cache->get('posts');
+        if ($posts === false) {
+            $posts = \R::findAll('posts');
+            App::$app->cache->set('posts', $posts, 3600);
+        }
         $menu = $this->menu;
         $title = 'Page title';
         $this->set(compact('title', 'posts', 'menu'));
