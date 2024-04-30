@@ -21,4 +21,12 @@ abstract class Controller
     {
         $this->vars = $vars;
     }
+    public function isAjax()
+    {
+        $isXRequest = isset($_SERVER['HTTP_X_REQUESTED_WITH']);
+        if (!$isXRequest)
+            return false;
+        $isAjax = $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+        return $isAjax;
+    }
 }
