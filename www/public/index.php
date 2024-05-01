@@ -1,11 +1,11 @@
 <?php
-error_reporting(E_ALL);
 
 use vendor\core\Router;
 use vendor\core\App;
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
+define('DEBUG', 1);
 define('WWW', __DIR__);
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
@@ -15,7 +15,7 @@ define('CACHE', dirname(__DIR__) . '/tmp/cache');
 define('LAYOUT', 'default');
 
 require '../vendor/libs/functions.php';
-
+date_default_timezone_set('Europe/Moscow');
 spl_autoload_register(function ($class) {
     $file = ROOT . '/';
     $file .= str_replace('\\', '/', $class);

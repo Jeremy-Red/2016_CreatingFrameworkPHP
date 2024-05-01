@@ -52,14 +52,17 @@ class Router
                     $cObj->$action();
                     $cObj->getView();
                 } else {
-                    echo "Method {$controller}::{$action} is not exist";
+                    // echo "Method {$controller}::{$action} is not exist";
+                    throw new \Exception("Method {$controller}::{$action} is not exist", 404);
                 }
             } else {
-                echo "Controller {$controller} is not exist";
+                // echo "Controller {$controller} is not exist";
+                throw new \Exception("Controller {$controller} is not exist", 404);
             }
         } else {
-            http_response_code(404);
-            include '404.html';
+            // http_response_code(404);
+            // include '404.html';
+            throw new \Exception("Page {$url} is not found", 404);
         }
     }
     protected static function upperCamelCase($name)
