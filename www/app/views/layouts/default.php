@@ -9,7 +9,7 @@
           href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet"
           href="css/main.css">
-    <title>Default | <?= $title ?: ''; ?></title>
+    <?php vendor\core\base\View::getMeta(); ?>
 </head>
 
 <body>

@@ -52,3 +52,34 @@
 // echo $cats[3]['title'];
 
 // === Find all with rules
+
+// class SingleTone_1
+// {
+//     use SingleTone;
+//     private function __construct()
+//     {
+//         echo 'It is construct into one';
+//     }
+
+// }
+// class SingleTone_2
+// {
+//     use SingleTone;
+//     private function __construct()
+//     {
+//         echo 'It is construct in two';
+//     }
+// }
+// trait SingleTone
+// {
+//     private static $instance;
+//     public static function instance()
+//     {
+//         if (self::$instance === null)
+//             self::$instance = new self;
+//         return self::$instance;
+//     }
+// }
+// SingleTone_1::instance();
+// echo '<br>';
+// SingleTone_2::instance();
