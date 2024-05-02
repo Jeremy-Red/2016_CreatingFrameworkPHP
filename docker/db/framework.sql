@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `parent` int(11) NOT NULL DEFAULT '0',
+  `alias` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=896 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (685,'Set of Apple',0,'set_of_apple'),(691,'Details for IPad',685,'details_to_ipad'),(692,'Details to iPhone',685,'details_to_iphone'),(693,'Details to iPod',685,'details_ipod'),(694,'Details to iMac',685,'details_imac'),(695,'iPad',691,'ipad'),(696,'iPad 2',691,'ipad_2'),(697,'iPad NEW (iPad 3)',691,'ipad_new_ipad_3'),(698,'iPad 4',691,'ipad_4'),(699,'iPad mini',691,'ipad_mini'),(700,'iPhone',692,'iphone'),(701,'iPhone 3g/3gs',692,'iphone_3g_3gs'),(702,'iPhone 4',692,'iphone_4'),(703,'iPhone 4s',692,'iphone_4s'),(704,'iPhone 5',692,'iphone_5'),(705,'Motherboards iPhone',685,'motherboards_iphone'),(836,'Secure screens Apple',0,'secure_screens_apple'),(840,'iPad',836,'ipad_840'),(841,'iPhone',836,'iphone_841'),(842,'iPod',836,'ipod_842'),(843,'Mac',836,'mac'),(853,'Hardware to fix Apple',0,'hardware_to_fix_apple'),(876,'Accessories Apple',0,'accessories_apple'),(877,'Accessories iPad',876,'accessories_ipad'),(878,'Accessories iPhone',876,'accessories_iphone'),(879,'Accessories iPod',876,'accessories_ipod'),(880,'Accessories iMac',876,'accessories_imac'),(881,'iPad',877,'ipad_881'),(882,'iPad 2',877,'ipad_2_882'),(883,'iPad NEW 3 / iPad 4',877,'ipad_new_3_ipad_4'),(884,'iPad mini',877,'ipad_mini_884'),(885,'iPhone 3G/3GS',878,'iphone_3g_3gs_885'),(886,'iPhone 4/4S',878,'iphone_4_4s'),(887,'iPhone 5',878,'iphone_5_887'),(888,'Accessories for Apple',876,'accessories_for_apple_888'),(895,'iPhone 5 Lamborgini',878,'iphone_5_lamborgini');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `category`
 --
 
@@ -77,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-28 15:27:51
+-- Dump completed on 2024-05-02 12:34:47

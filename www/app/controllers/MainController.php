@@ -10,7 +10,7 @@ class MainController extends AppController
     public function indexAction()
     {
         $model = new Main();
-        // echo $test;
+        // trigger_error('E_USER_ERROR', E_USER_ERROR);
         // \R::fancyDebug(true);
         $posts = App::$app->cache->get('posts');
         if ($posts === false) {
@@ -26,6 +26,8 @@ class MainController extends AppController
     {
         if ($this->isAjax()) {
             $model = new Main();
+            // $data = ['answer' => 'Answer from server', 'code' => 200];
+            // echo json_encode($data);
             $post = \R::findOne('posts', "id = {$_POST['id']}");
             $this->loadView('_test', compact('post'));
             die;

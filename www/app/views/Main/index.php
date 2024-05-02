@@ -1,6 +1,10 @@
 <button class="btn btn-primary"
         id="send">Button</button>
 
+<div id="answer"></div>
+
+
+
 <?php if (!empty($posts)): ?>
     <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
         <div class="list-group">
@@ -39,7 +43,7 @@
                 'id': 3,
             },
             success: function (response) {
-                console.log(response);
+                $('#answer').html(response);
             },
             error: function (error) {
                 alert(error);
