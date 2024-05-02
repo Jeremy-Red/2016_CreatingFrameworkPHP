@@ -1,9 +1,8 @@
+<div id="answer"></div>
 <button class="btn btn-primary"
         id="send">Button</button>
-
-<div id="answer"></div>
-
-
+<br>
+<?php new \vendor\widgets\menu\Menu(); ?>
 
 <?php if (!empty($posts)): ?>
     <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
