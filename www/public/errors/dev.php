@@ -10,6 +10,7 @@
 
 <body>
     <h1>Error</h1>
+    <pre>
     <table>
         <tr>
             <td><b>Code:</b></td>
@@ -28,6 +29,7 @@
             <td><?= $errline ?></td>
         </tr>
     </table>
+    </pre>
 </body>
 
 </html>
