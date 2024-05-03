@@ -2,7 +2,31 @@
 <button class="btn btn-primary"
         id="send">Button</button>
 <br>
-<?php new \vendor\widgets\menu\Menu(); ?>
+<?php
+$obj1 = new \vendor\widgets\menu\Menu([
+    // 'tpl' => WWW . '/menu/my_menu.php',
+    // 'container' => 'ul',
+    'tpl' => WWW . '/menu/select.php',
+    'container' => 'select',
+    'class' => 'my-menu',
+    'table' => 'categories',
+    // 'cache' => 0,
+    'cache' => 60,
+    'cacheKey' => 'fw-menu-select',
+]);
+$obj2 = new \vendor\widgets\menu\Menu([
+    'tpl' => WWW . '/menu/my_menu.php',
+    'container' => 'ul',
+    // 'tpl' => WWW . '/menu/select.php',
+    // 'container' => 'select',
+    'class' => 'my-menu',
+    'table' => 'categories',
+    // 'cache' => 0,
+    'cache' => 60,
+    'cacheKey' => 'fw-menu-ul',
+]);
+// echo $obj1->getHash();
+?>
 
 <?php if (!empty($posts)): ?>
     <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
