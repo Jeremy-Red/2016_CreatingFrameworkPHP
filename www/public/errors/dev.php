@@ -10,10 +10,24 @@
 
 <body>
     <h1>Error</h1>
-    <div><b>Code:</b> <?= $errname ?></div>
-    <div><b>Message:</b> <?= $errstr ?></div>
-    <div><b>File:</b> <?= $errfile ?></div>
-    <div><b>Line:</b> <?= $errline ?></div>
+    <table>
+        <tr>
+            <td><b>Code:</b></td>
+            <td><?= $errname ?></td>
+        </tr>
+        <tr>
+            <td><b>Message:</b></td>
+            <td><?= $errstr ?></td>
+        </tr>
+        <tr>
+            <td><b>File:</b></td>
+            <td><?= $errfile ?></td>
+        </tr>
+        <tr>
+            <td><b>Line:</b></td>
+            <td><?= $errline ?></td>
+        </tr>
+    </table>
 </body>
 
 </html>
