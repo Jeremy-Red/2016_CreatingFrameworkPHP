@@ -29,6 +29,11 @@ class Router
                 if (!isset($route['action'])) {
                     $route['action'] = 'index';
                 }
+                if (!isset($route['prefix'])) {
+                    $route['prefix'] = '';
+                } else {
+                    $route['prefix'] .= '\\';
+                }
                 $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
                 return true;
@@ -41,6 +46,7 @@ class Router
         $url = self::removeQueryString($url);
         if (self::matchRoute($url)) {
             $controller = 'app\controllers\\';
+            $controller .= self::$route['prefix'];
             $controller .= self::$route['controller'];
             $controller .= 'Controller';
             if (class_exists($controller)) {
@@ -52,17 +58,13 @@ class Router
                     $cObj->$action();
                     $cObj->getView();
                 } else {
-                    // echo "Method {$controller}::{$action} is not exist";
-                    throw new \Exception("Method {$controller}::{$action} is not exist", 404);
+                    throw new \Exception("Method <b>{$controller}::{$action}</b> is not exist", 404);
                 }
             } else {
-                // echo "Controller {$controller} is not exist";
-                throw new \Exception("Controller {$controller} is not exist", 404);
+                throw new \Exception("Controller <b>{$controller}</b> is not exist", 404);
             }
         } else {
-            // http_response_code(404);
-            // include '404.html';
-            throw new \Exception("Page {$url} is not found", 404);
+            throw new \Exception("Page <b>{$url}</b> is not found", 404);
         }
     }
     protected static function upperCamelCase($name)

@@ -23,13 +23,15 @@ class View
         if (is_array($vars))
             extract($vars);
         $file_view = APP . "/views/";
+        $file_view .= $this->route['prefix'];
         $file_view .= "{$this->route['controller']}/";
         $file_view .= "{$this->view}.php";
+        $file_view = strtr($file_view, '\\', '/');
         ob_start();
         if (is_file($file_view)) {
             require $file_view;
         } else {
-            echo "<pre>View <b>{$file_view}</b> is not found.</pre>";
+            throw new \Exception("View <b>{$file_view}</b> is not found.", 404);
         }
         $content = ob_get_clean();
 
@@ -41,7 +43,7 @@ class View
                 $scripts = $this->scripts;
                 require $file_layout;
             } else {
-                echo "<pre>Layout <b>{$file_layout}</b> is not found.</pre>";
+                throw new \Exception("Layout <b>{$file_layout}</b> is not found.", 404);
             }
         }
     }

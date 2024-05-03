@@ -42,7 +42,7 @@ class Menu
                 $cache->set($this->cacheKey, $this->menuHtml, $this->cache);
             }
         }
-        // $this->output();
+        $this->output();
     }
     protected function output()
     {

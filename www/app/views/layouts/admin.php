@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        <h1>Hello</h1>
+        <h1>Admin panel</h1>
         <ul class="nav nav-underline">
             <?php if (isset($menu)): ?>
                 <?php foreach ($menu as $item): ?>
