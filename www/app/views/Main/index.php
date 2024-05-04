@@ -3,7 +3,7 @@
         id="send">Button</button>
 <br>
 <?php
-$obj1 = new \vendor\widgets\menu\Menu([
+$obj1 = new \fw\widgets\menu\Menu([
     // 'tpl' => WWW . '/menu/my_menu.php',
     // 'container' => 'ul',
     'tpl' => WWW . '/menu/select.php',
@@ -14,7 +14,7 @@ $obj1 = new \vendor\widgets\menu\Menu([
     'cache' => 60,
     'cacheKey' => 'fw-menu-select',
 ]);
-$obj2 = new \vendor\widgets\menu\Menu([
+$obj2 = new \fw\widgets\menu\Menu([
     'tpl' => WWW . '/menu/my_menu.php',
     'container' => 'ul',
     // 'tpl' => WWW . '/menu/select.php',

@@ -1,7 +1,7 @@
 <?php
 
-use vendor\core\Router;
-use vendor\core\App;
+use fw\core\Router;
+use fw\core\App;
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
@@ -9,21 +9,22 @@ define('DEBUG', 1);
 define('WWW', __DIR__);
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
-define('CORE', dirname(__DIR__) . '/vendor/core');
-define('LIBS', dirname(__DIR__) . '/vendor/libs');
+define('CORE', dirname(__DIR__) . '/vendor/fw/core');
+define('LIBS', dirname(__DIR__) . '/vendor/fw/libs');
 define('CACHE', dirname(__DIR__) . '/tmp/cache');
 define('LAYOUT', 'default');
 
-require '../vendor/libs/functions.php';
+require '../vendor/fw/libs/functions.php';
+require __DIR__ . '/../vendor/autoload.php';
 date_default_timezone_set('Europe/Moscow');
-spl_autoload_register(function ($class) {
-    $file = ROOT . '/';
-    $file .= str_replace('\\', '/', $class);
-    $file .= '.php';
-    if (is_file($file)) {
-        require_once $file;
-    }
-});
+// spl_autoload_register(function ($class) {
+//     $file = ROOT . '/';
+//     $file .= str_replace('\\', '/', $class);
+//     $file .= '.php';
+//     if (is_file($file)) {
+//         require_once $file;
+//     }
+// });
 
 new App();
 

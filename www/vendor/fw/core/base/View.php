@@ -1,5 +1,5 @@
 <?php
-namespace vendor\core\base;
+namespace fw\core\base;
 
 class View
 {
