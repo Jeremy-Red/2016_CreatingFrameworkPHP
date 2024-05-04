@@ -9,6 +9,7 @@ RUN adduser --system --shell /bin/bash --uid ${UID} --gid ${GID} --disabled-pass
 RUN sed -i "s/User www-data/User ${USERGROUP}/g" /etc/apache2/apache2.conf
 RUN sed -i "s/Group www-data/Group ${USERGROUP}/g" /etc/apache2/apache2.conf
 
-
 RUN a2enmod rewrite
 RUN docker-php-ext-install pdo pdo_mysql mysqli mbstring
+
+COPY --from=composer/composer:2.2-bin /composer /usr/bin/composer
